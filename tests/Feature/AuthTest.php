@@ -53,4 +53,10 @@ class AuthTest extends TestCase
         ]);
         $response->assertStatus(302);
     }
+
+    public function test_verification_controller_constructor()
+    {
+        $response = $this->get('/email/resend');
+        $response->assertStatus(302);
+    }
 }
