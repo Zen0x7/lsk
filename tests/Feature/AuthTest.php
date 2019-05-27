@@ -27,7 +27,7 @@ class AuthTest extends TestCase
     public function test_register_route()
     {
         $user = factory(User::class)->make();
-        $password = substr(md5(mt_rand()), 0, 6);
+        $password = substr(md5(mt_rand()), 0, 8);
         $response = $this->post('/register', [
             'name' => $user->name,
             'email' => $user->email,
