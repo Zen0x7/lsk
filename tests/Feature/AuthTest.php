@@ -59,4 +59,12 @@ class AuthTest extends TestCase
         $response = $this->get('/email/resend');
         $response->assertStatus(302);
     }
+
+    public function test_api_user_route()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user, 'api')
+            ->json('GET', '/api/user');
+        $response->assertStatus(200);
+    }
 }
