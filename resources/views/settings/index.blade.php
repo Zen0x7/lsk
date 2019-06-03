@@ -28,18 +28,23 @@
             </div>
             <div class="col-md-9">
                 <h3 class="pb-2 border-bottom">{{ __('Public profile') }}</h3>
+                <form action="{{ route('settings.update-profile') }}" method="POST">
 
-                <div class="form-group mt-4">
-                    <label for="name">{{ __('Name') }}</label>
-                    <input type="text" class="form-control" id="name" value="{{ auth()->user()->name }}">
-                </div>
+                    @if(auth()->user()->updated_at)
+                        <p class="text-muted">{{ __('Last updated') }} {{ auth()->user()->updated_at->diffForHumans() }}</p>
+                    @endif
 
-                <div class="form-group mt-2">
-                    <label for="email">{{ __('Email Address') }}</label>
-                    <input type="email" class="form-control" id="email" value="{{ auth()->user()->email }}" disabled>
-                </div>
-
-                <button type="button" class="btn btn-success">{{ __('Update profile') }}</button>
+                    {{ csrf_field() }}
+                    <div class="form-group mt-4">
+                        <label for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ auth()->user()->name }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="email">{{ __('Email Address') }}</label>
+                        <input type="email" class="form-control" name="email" id="email" value="{{ auth()->user()->email }}" disabled>
+                    </div>
+                    <button type="submit" class="btn btn-success">{{ __('Update profile') }}</button>
+                </form>
             </div>
         </div>
     </div>

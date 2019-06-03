@@ -18,3 +18,5 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/settings', 'SettingsController@index')->name('settings');
+
+Route::post('/settings/update-profile', 'SettingsController@updateProfile')->name('settings.update-profile');

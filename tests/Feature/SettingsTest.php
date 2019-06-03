@@ -17,4 +17,19 @@ class SettingsTest extends TestCase
             ->get('/settings');
         $response->assertStatus(200);
     }
+
+    public function test_update_profile_route()
+    {
+        $user = factory(User::class)->create();
+        $name = factory(User::class)->make()->name;
+        $response = $this->actingAs($user)
+            ->post('/settings/update-profile', [
+            'name' => $name,
+        ]);
+        $response->assertStatus(302)
+            ->assertRedirect('/settings');
+        $user_response = $this->actingAs($user, 'api')
+            ->json('GET', '/api/user');
+        $user_response->assertSee($name);
+    }
 }
