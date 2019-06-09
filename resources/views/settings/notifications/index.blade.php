@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             @include('settings.sidebar')
             <div class="col-md-9">
-                <h3 class="pb-2 border-bottom">{{ __('Settings') }}</h3>
+                <h3 class="pb-2 border-bottom">{{ __('Notifications') }}</h3>
             </div>
         </div>
     </div>

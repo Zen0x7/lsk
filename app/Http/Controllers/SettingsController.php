@@ -10,12 +10,4 @@ class SettingsController extends Controller
     {
         return view('settings.index');
     }
-
-    public function updateProfile(UpdateProfileRequest $request)
-    {
-        $request->user()->update([
-            'name' => $request->name,
-        ]);
-        return redirect()->route('settings');
-    }
 }
