@@ -67,8 +67,7 @@ class SettingsTest extends TestCase
             ->post('/settings/profile/update-profile', [
             'name' => $name,
         ]);
-        $response->assertStatus(302)
-            ->assertRedirect('/settings/profile');
+        $response->assertStatus(302);
         $user_response = $this->actingAs($user, 'api')
             ->json('GET', '/api/user');
         $user_response->assertSee($name);
@@ -82,8 +81,8 @@ class SettingsTest extends TestCase
             ->post('/settings/account/update-email', [
                 'new_email' => $email,
             ]);
-        $response->assertStatus(302)
-            ->assertRedirect('/settings/account');
+        $response->assertStatus(200)
+            ->assertSee($email);
         $user_response = $this->actingAs($user, 'api')
             ->json('GET', '/api/user');
         $user_response->assertSee($email);
@@ -98,7 +97,6 @@ class SettingsTest extends TestCase
                 'password' => $password,
                 'password_confirmation' => $password,
             ]);
-        $response->assertStatus(302)
-            ->assertRedirect('/settings/account');
+        $response->assertStatus(200);
     }
 }
