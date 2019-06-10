@@ -1,30 +1,36 @@
-<h3 class="pb-2 mt-5 border-bottom">{{ __('Password') }}</h3>
-<form action="{{ route('settings.account.update-password') }}" method="POST">
+<settings-account-password inline-template>
+    <div>
+        <h3 class="pb-2 border-bottom">{{ __('Password') }}</h3>
+        <form action="#" novalidate>
+            <div class="form-group mt-2">
+                <label for="password">{{ __('Password') }}</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       v-bind:class="{ 'is-invalid': passwordHasError }"
+                       v-model="password"
+                       name="password">
+                <div v-if="passwordHasError"
+                     class="invalid-feedback">
+                    @{{ errors.password[0] }}
+                </div>
+            </div>
 
-    {{ csrf_field() }}
+            <div class="form-group mt-2">
+                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+                <input type="password"
+                       class="form-control"
+                       id="password_confirmation"
+                       v-bind:class="{ 'is-invalid': passwordConfirmationHasError }"
+                       v-model="password_confirmation"
+                       name="password_confirmation">
+                <div v-if="passwordConfirmationHasError"
+                     class="invalid-feedback">
+                    @{{ errors.password_confirmation[0] }}
+                </div>
+            </div>
 
-    <div class="form-group mt-2">
-        <label for="password">{{ __('Password') }}</label>
-        <input type="password"
-               class="form-control @if($errors->has('password')) is-invalid @endif"
-               id="password"
-               name="password">
-
-        @if($errors->has('password'))
-            <div class="invalid-feedback">{{ $errors->first('password') }}</div>
-        @endif
+            <button type="button" class="btn btn-primary" @click="update">{{ __('Update') }}</button>
+        </form>
     </div>
-
-    <div class="form-group mt-2">
-        <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-        <input type="password"
-               class="form-control @if($errors->has('password_confirmation')) is-invalid @endif"
-               id="password_confirmation"
-               name="password_confirmation">
-        @if($errors->has('password_confirmation'))
-            <div class="invalid-feedback">{{ $errors->first('password_confirmation') }}</div>
-        @endif
-    </div>
-
-    <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
-</form>
+</settings-account-password>

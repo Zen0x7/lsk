@@ -5,8 +5,16 @@
         <div class="row justify-content-center">
             @include('settings.sidebar')
             <div class="col-md-9">
-                @include('settings.account.email')
-                @include('settings.account.password')
+                <div class="card">
+                    <div class="card-body">
+                        @include('settings.account.email')
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        @include('settings.account.password')
+                    </div>
+                </div>
             </div>
         </div>
     </div>

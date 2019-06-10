@@ -17,7 +17,7 @@ class SettingsAccountController extends Controller
         $request->user()->update([
             'email' => $request->new_email,
         ]);
-        return redirect()->route('settings.account');
+        return response($request->user(), 200);
     }
 
     public function updatePassword(UpdatePasswordRequest $request)
