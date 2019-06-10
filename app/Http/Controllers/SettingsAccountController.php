@@ -25,6 +25,6 @@ class SettingsAccountController extends Controller
         $request->user()->update([
             'password' => bcrypt($request->password),
         ]);
-        return redirect()->route('settings.account');
+        return response([], 200);
     }
 }
