@@ -99,4 +99,15 @@ class SettingsTest extends TestCase
             ]);
         $response->assertStatus(200);
     }
+
+    public function test_create_organization_route()
+    {
+        $user = factory(User::class)->create();
+        $name = Str::random(8);
+        $response = $this->actingAs($user)
+            ->post('/settings/organizations/', [
+                'name' => $name,
+            ]);
+        $response->assertStatus(201);
+    }
 }
