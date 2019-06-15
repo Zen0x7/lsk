@@ -14,3 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', 'Api\UserController');
+Route::middleware('auth:api')->get('/organizations', 'Api\OrganizationsController@index');
+Route::middleware('auth:api')->post('/organizations', 'Api\OrganizationsController@store');

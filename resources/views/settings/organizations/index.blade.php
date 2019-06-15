@@ -6,7 +6,7 @@
             @include('settings.sidebar')
             <div class="col-md-9">
                 <h3 class="pb-2 border-bottom">{{ __('Organizations') }}</h3>
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         {{ __('Create an organization') }}
                     </div>
@@ -34,6 +34,23 @@
                         </create-organization>
                     </div>
                 </div>
+
+                <!-- start: view-organizations -->
+                <div class="card">
+                    <div class="card-header">
+                        {{ __('Your organizations') }}
+                    </div>
+                    <div class="card-body">
+                        <index-organizations inline-template>
+                            <div>
+                                <ul>
+                                    <li v-for="organizations in organization">@{{ organization.name }}</li>
+                                </ul>
+                            </div>
+                        </index-organizations>
+                    </div>
+                </div>
+                <!-- end: view-organizations -->
             </div>
         </div>
     </div>

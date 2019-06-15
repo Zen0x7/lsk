@@ -11,12 +11,4 @@ class SettingsOrganizationsController extends Controller
     {
         return view('settings.organizations.index');
     }
-
-    public function store(Request $request)
-    {
-        $organization = $request->user()->organizations()->create($request->only([
-            'name'
-        ]));
-        return response($organization, 201);
-    }
 }

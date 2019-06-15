@@ -12,7 +12,7 @@
             store() {
                 this.$validator.validateAll().then((result) => {
                     if (result) {
-                        axios.post('/settings/organizations', {
+                        axios.post('/api/organizations', {
                             name: this.name
                         }).then((response) => {
                             Swal.fire({
