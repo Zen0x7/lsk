@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/settings/account/update-password', 'SettingsAccountController@updatePassword')->name('settings.account.update-password');
 
     Route::get('/settings/organizations', 'SettingsOrganizationsController@index')->name('settings.organizations');
+    Route::post('/settings/organizations', 'SettingsOrganizationsController@store')->name('settings.organizations.store');
 
     Route::get('/settings/notifications', 'SettingsNotificationsController@index')->name('settings.notifications');
 
