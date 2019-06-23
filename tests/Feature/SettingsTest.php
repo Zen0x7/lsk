@@ -110,4 +110,12 @@ class SettingsTest extends TestCase
             ]);
         $response->assertStatus(201);
     }
+
+    public function test_index_organization_route()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user, 'api')
+            ->get('/api/organizations/');
+        $response->assertStatus(200);
+    }
 }
