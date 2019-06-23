@@ -44,7 +44,7 @@
                         <index-organizations inline-template>
                             <div>
                                 <ul>
-                                    <li v-for="organizations in organization">@{{ organization.name }}</li>
+                                    <li v-for="organization in organizations">@{{ organization.name }}</li>
                                 </ul>
                             </div>
                         </index-organizations>
