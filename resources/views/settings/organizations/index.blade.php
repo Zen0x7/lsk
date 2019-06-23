@@ -43,8 +43,29 @@
                     <div class="card-body">
                         <index-organizations inline-template>
                             <div>
-                                <ul>
-                                    <li v-for="organization in organizations">@{{ organization.name }}</li>
+                                <div v-if="organizations.length === 0" class="alert alert-light text-center mb-0" role="alert">
+                                    {{ __('You do not have any organization created.') }}
+                                </div>
+                                <ul v-if="organizations.length > 0" class="list-group">
+                                    <li v-for="organization in organizations" class="list-group-item">
+                                        <div class="float-right">
+                                            <button type="button" class="btn btn-light">
+                                                {{ __('View') }}
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                {{ __('Settings') }}
+                                            </button>
+                                        </div>
+                                        <h3>
+                                            @{{ organization.name }}
+                                        </h3>
+                                        <p class="small mb-0">
+                                            {{ __('You create this group at') }} @{{ organization.created_at }}
+                                        </p>
+                                        <p v-if="organization.created_at !== organization.updated_at" class="small mb-0">
+                                            {{ __('Last update was') }} @{{ organization.updated_at }}
+                                        </p>
+                                    </li>
                                 </ul>
                             </div>
                         </index-organizations>
