@@ -1,6 +1,6 @@
 <script>
-    import axios from 'axios';
-    import Swal from 'sweetalert2';
+    import { Api } from '../../services/api';
+    import EventBus from "../../services/event-bus";
 
     export default {
         data() {
@@ -9,21 +9,15 @@
             }
         },
         mounted() {
-            this.fetch();
+            let self = this;
+            self.fetch();
+            EventBus.$on('organization-created', function(){
+                self.fetch();
+            })
         },
         methods: {
-            fetch() {
-                let self = this;
-                axios.get('/settings/organizations').then((response) => {
-                    self.organizations = response.data;
-                }).catch(error => {
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Whoops',
-                        text: 'Something went wrong',
-                        footer: error.response.data.message,
-                    });
-                });
+            async fetch() {
+                this.organizations = await Api.get('/api/organizations');
             }
         }
     }
