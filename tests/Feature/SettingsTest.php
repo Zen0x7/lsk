@@ -104,10 +104,18 @@ class SettingsTest extends TestCase
     {
         $user = factory(User::class)->create();
         $name = Str::random(8);
-        $response = $this->actingAs($user)
-            ->post('/settings/organizations/', [
+        $response = $this->actingAs($user, 'api')
+            ->post('/api/organizations/', [
                 'name' => $name,
             ]);
         $response->assertStatus(201);
+    }
+
+    public function test_index_organization_route()
+    {
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user, 'api')
+            ->get('/api/organizations/');
+        $response->assertStatus(200);
     }
 }

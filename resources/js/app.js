@@ -26,6 +26,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('settings-account-email', require('./components/Settings/Account/Email.vue').default);
 Vue.component('settings-account-password', require('./components/Settings/Account/Password.vue').default);
 Vue.component('create-organization', require('./components/Organizations/Create.vue').default);
+Vue.component('index-organizations', require('./components/Organizations/Index.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
